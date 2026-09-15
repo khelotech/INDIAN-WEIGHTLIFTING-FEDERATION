@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+
+  # Backend service
+  indian_weightlifting_federation:
+    image: 979699864122.dkr.ecr.ap-south-1.amazonaws.com/indian_weightlifting_federation:latest
+    container_name: indian_weightlifting_federation
+    working_dir: /app
+    ports:
+      - "5003:3000"
+    restart: unless-stopped
+    env_file:
+      - .env
+    networks:
+      - indian_weightlifting_federation_network
+
+networks:
+  indian_weightlifting_federation_network:
+    driver: bridge
